@@ -7,6 +7,51 @@ var osm = L.tileLayer("http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png");
 
 map.addLayer(osm);
 
+var drawItems = new L.FeatureGroup();
+
+map.addLayer(drawItems);
+
+var drawControl = new L.Control.Draw({
+    edit: {
+        
+        featureGroup: drawItems
+
+    }, 
+    draw: {
+        polygon: {
+            shapeOptions: {
+                color: "#c0392b",
+                fillColor: "#e74c3c"
+            }
+        },
+        polyline: {
+            shapeOptions: {
+                color: "#c0392b",
+            }
+        },
+        circle: {
+            shapeOptions: {
+                color: "#c0392b",
+                fillColor: "#e74c3c"
+            }
+        },
+        marker: false,
+        circlemarker: false,
+        rectangle: false
+    }
+});
+
+map.addControl(drawControl);
+
+map.on(L.Draw.Event.CREATED, function (event) {
+
+    var layer = event.layer;
+
+    drawItems.addLayer(layer);
+    
+});
+
+
 var geocoder = L.Control.Geocoder.nominatim();
 
 L.Control.geocoder({
@@ -188,4 +233,4 @@ document.querySelector(".icons .show").onclick = function () {
 
     }
 
-}
+};
