@@ -1,0 +1,224 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#map {
+    width: 100%;
+    height: 100vh;
+}
+.icons {
+    background-color: white;
+    padding: 10px 2px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 1000;
+    top: 60px;
+    right: -50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 50px;
+    border: 2px solid #3498db;
+    transition: 0.3s;
+}
+.icons .show {
+    position: absolute;
+    left: -19px;
+    z-index: 1000;
+    background-color: white;
+    padding: 8px 5px;
+    font-size: 12px;
+    border-radius: 10px;
+    color: #3498db;
+    border-color: #3498db transparent #3498db #3498db;
+    border-width: 2px;
+    border-style: solid;
+    cursor: pointer;
+}
+.icons .show:hover .icons.open {
+    right: 3px;
+}
+.icons.open {
+    right: 3px;
+}
+.icons img {
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.icons img.rotated {
+    transform: rotateY(180deg);
+}
+.icons .active {
+    opacity: 1;
+    background-color: #eee;
+    border-radius: 10px;
+} 
+.reset, .delete, .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 10px;
+    color: white;
+}
+.delete {
+    padding: 6px 12px !important;
+}
+.reset svg,
+.home svg, 
+.delete svg {
+    font-size: 12px;
+}
+/* Start Navigation */
+.navigation {
+    position: fixed;
+    bottom: -114px;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 10px;
+    gap: 10px;
+    border: 2px solid #3498db;
+    transition: 0.3s;
+}
+.navigation.open {
+    bottom: 0px;
+}
+@media(max-width: 991px) {
+    .navigation {
+        bottom: -224px;
+    }
+}
+@media(max-width: 767px) {
+    .navigation {
+        bottom: -224px;
+    }
+}
+@media(max-width: 575px) {
+    .navigation {
+        bottom: -654px;
+    }
+}
+.navigation .show {
+    position: absolute;
+    z-index: 1000;
+    top: -19px;
+    left: 50%;
+    font-size: 12px;
+    color: #3498db;
+    background-color: #eee;
+    padding: 0px 15px;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3498db #3498db transparent #3498db;
+}
+.navigation .box {
+    width: calc((100% / 5) - 8px);
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+@media(max-width: 991px) {
+    .navigation .box {
+        width: calc((100% / 4) - 8px);
+    }
+}
+@media(max-width: 767px) {
+    .navigation .box {
+        width: calc((100% / 3) - 8px);
+    }
+}
+@media(max-width: 575px) {
+    .navigation .box {
+        width: 100%;
+    }
+}
+.navigation .box img {
+    width: 100%;
+    height: 100px;
+    transition: 0.3s;
+}
+@media(max-width: 575px) {
+    .navigation .box img {
+        width: 100%;
+        height: 120px;
+    }
+}
+.navigation .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000002e;
+}
+.navigation .box .overlay:hover {
+    background-color: transparent;
+}
+.navigation .box:hover img {
+    transform: scale(1.5);
+}
+/* End Navigation */
+.box .red-army,
+.box .red-tank,
+.box .red-cannon,
+.box .red-lancher,
+.box .red-uav {
+    display: none;
+    position: absolute;
+    top: -4px;
+    right: 39px;
+    z-index: 1030;
+    width: 65px;
+    height: 50px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3498db transparent #3498db #3498db;
+}
+.box .red-lancher {
+    right: 53px !important;
+}
+.box .arrmy:hover + .red-army,
+.box .army-tank:hover + .red-tank,
+.box .cannon:hover + .red-cannon,
+.box .r-lancher:hover + .red-lancher,
+.box .iran-uav:hover + .red-uav {
+    display: flex;
+}
+.box .red-army:hover,
+.box .red-tank:hover,
+.box .red-cannon:hover,
+.box .red-uav:hover,
+.box .red-lancher:hover{
+    display: flex;
+}
+.box .red-army img.active,
+.box .red-tank img.active,
+.box .red-cannon img.active,
+.box .red-lancher img.active,
+.box .red-uav img.active,
+.box .red-lancher img.active{
+    opacity: 1;
+}
