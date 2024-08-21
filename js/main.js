@@ -80,57 +80,82 @@ var currentIcon = null;
 
 var clickHandler = function () {};
 
+var isDrawing = false;
+
+function enableDrawing() {
+
+    isDrawing = true;
+
+    map.off("click", clickHandler);
+
+};
+
+function enableIconPlacement() {
+
+    isDrawing = false;
+
+    map.on("click", clickHandler);
+
+}
+
 function iconClick(icon, iconLink, iconRotated = null, iconSize) {
     
     document.querySelector(icon).onclick = function (e) {
+
+        if (!isDrawing) {
     
-        e.target.classList.add("active");
-
-        e.target.parentElement.parentElement.querySelectorAll(".active").forEach(ep => {
-
-            ep.classList.remove("active");
+            e.target.parentElement.parentElement.querySelectorAll(".active").forEach(ep => {
+    
+                ep.classList.remove("active");
+    
+            });
 
             e.target.classList.add("active");
 
-        });
-
-        currentIcon = iconLink;
-
-        map.off("click", clickHandler);
-        
-        clickHandler = function (m) {
+            currentIcon = iconLink;
+    
+            map.off("click", clickHandler);
             
-            if (e.target.classList.contains("rotated")) {
+            clickHandler = function (m) {
                 
-                currentIcon = iconRotated;
+                if (!isDrawing) {
+
+                    if (e.target.classList.contains("rotated")) {
+                        
+                        currentIcon = iconRotated;
+            
+                    }
+                    
+                    var iconOptions = {
+                    
+                        iconUrl: currentIcon,
+                        
+                        iconSize: iconSize
+        
+                    }
+        
+                    var customIcon = L.icon(iconOptions);
+        
+                    var markerOptions = {
+        
+                        clickable: true,
+                        draggable: true,
+                        icon: customIcon
+        
+                    }
+        
+                    var marker = L.marker(m.latlng, markerOptions).addTo(map);
+        
+                    markers.push(marker);
+                }
     
             }
-
-            var iconOptions = {
-
-                iconUrl: currentIcon,
-                iconSize: iconSize
-
-            }
-
-            var customIcon = L.icon(iconOptions);
-
-            var markerOptions = {
-
-                clickable: true,
-                draggable: true,
-                icon: customIcon
-
-            }
-
-            var marker = L.marker(m.latlng, markerOptions).addTo(map);
-
-            markers.push(marker);
-
+    
+            map.on("click", clickHandler);
+            
         }
 
-        map.on("click", clickHandler);
-    }
+    };
 
 }
 
@@ -142,6 +167,15 @@ iconClick(".apache", "./images/apache.png", "./images/apache.png", [40, 40]);
 iconClick(".iran-uav", "./images/iran-uav.png", "./images/flip-iran-uav.png", [40, 40]);
 iconClick(".mig", "./images/fighter.png", "./images/flip-fighter.png", [40, 40]);
 iconClick(".fire", "./images/fire.png", "./images/fire.png", [40, 40]);
+
+map.on("draw:drawstart", function () {
+    enableDrawing();
+});
+
+map.on("draw:drawstop", function () {
+    enableIconPlacement();
+});
+
 
 document.querySelector(".reset").onclick =  function () {
 
