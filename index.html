@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>War Map</title>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="icons open">
+        <div class="show"><i class='fa-solid fa-angle-right'></i></div>
+        <div class="box">
+            <img class="arrmy" src="images/army.png" alt="جنود الجيش">
+            <!-- <span class="red-army">
+                <img class="arrmy" src="images/الجنود-02.png" alt="جنود المليشيا">
+            </span> -->
+        </div>
+        <div class="box">
+            <img class="army-tank" src="images/tank.png" alt="دبابة الجيش">
+            <!-- <span class="red-tank">
+                <img class="army-tank" src="images/دبابة المليشيا.png" alt="دبابة المليشيا">
+            </span> -->
+        </div>
+        <div class="box">
+            <img class="cannon" src="images/cannon.png" alt="مدفع الجيش">
+            <!-- <span class="red-cannon">
+                <img class="cannon" src="images/flip-cannon.png" alt="مدفع المليشيا">
+            </span> -->
+        </div>
+        <div class="box">
+            <img class="r-lancher" src="images/r-lancher.png" alt="Rocketlancher">
+            <!-- <span class="red-lancher">
+                <img class="r-lancher" src="images/Rocket-lancher.png" alt="Red Lancher">
+            </span> -->
+        </div>
+        <div class="box">
+            <img class="iran-uav" src="images/iran-uav.png" alt="مسيرة الجيش">
+            <!-- <span class="red-uav">
+                <img class="iran-uav" src="images/مسيرات المليشيا.png" alt="مسيرة المليشيا">
+            </span> -->
+        </div>
+        <div class="box">
+            <img class="apache" src="images/apache.png" alt="Apache">
+        </div>
+        <div class="box">
+            <img class="mig" src="images/fighter.png" alt="طائرة الجيش">
+        </div>
+        <div class="box">
+            <img class="fire" src="images/fire.png" alt="Fire">
+        </div>
+        <div class="box">
+        <span class="reset btn btn-warning"><i class="fas fa-undo"></i></span>
+        </div>
+        <div class="box">
+            <span class="delete btn btn-danger"><i class="fas fa-close"></i></span>
+        </div>
+        <div class="box">
+            <span class="home btn btn-primary"><i class="fas fa-home"></i></span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="navigation">
+            <div class="show"><i class='fa-solid fa-angle-down'></i></div>
+            <div class="sinar box">
+                <div class="overlay">سنار</div>
+                <img src="images/Sinar.jpg" alt="سنار">
+            </div>
+            <div class="fasher box">
+                <div class="overlay">الفاشر</div>
+                <img src="images/Alfasher.jpg" alt="الفاشر">
+            </div>
+            <div class="khartoum box">
+                <div class="overlay">الخرطوم</div>
+                <img src="images/Khartoum.jpg" alt="الخرطوم">
+            </div>
+            <div class="omdurman box">
+                <div class="overlay">امدرمان</div>
+                <img src="images/Umdurman.webp" alt="امدرمان">
+            </div>
+            <div class="bahri box">
+                <div class="overlay">بحري</div>
+                <img src="images/Bahri.webp" alt="بحري">
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
