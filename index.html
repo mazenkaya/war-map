@@ -1,224 +1,100 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-#map {
-    width: 100%;
-    height: 100vh;
-}
-.icons {
-    background-color: white;
-    padding: 10px 2px;
-    border-radius: 10px;
-    position: fixed;
-    z-index: 1000;
-    top: 60px;
-    right: -50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 50px;
-    border: 2px solid #3498db;
-    transition: 0.3s;
-}
-.icons .box {
-    position: relative;
-}
-.icons .show {
-    position: absolute;
-    left: -19px;
-    z-index: 1000;
-    background-color: white;
-    padding: 8px 5px;
-    font-size: 12px;
-    border-radius: 10px;
-    color: #3498db;
-    border-color: #3498db transparent #3498db #3498db;
-    border-width: 2px;
-    border-style: solid;
-    cursor: pointer;
-}
-.icons .show:hover .icons.open {
-    right: 3px;
-}
-.icons.open {
-    right: 3px;
-}
-.icons img {
-    width: 40px;
-    height: 40px;
-    opacity: 0.7;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.icons img.rotated {
-    transform: rotateY(180deg);
-}
-.icons .active {
-    opacity: 1;
-    background-color: #eee;
-    border-radius: 10px;
-} 
-.reset, .delete, .home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 10px;
-    color: white;
-}
-.delete {
-    padding: 6px 12px !important;
-}
-.reset svg,
-.home svg, 
-.delete svg {
-    font-size: 12px;
-}
-/* Start Navigation */
-.navigation {
-    position: fixed;
-    bottom: -114px;
-    z-index: 1000;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #eee;
-    padding: 5px;
-    border-radius: 10px;
-    gap: 10px;
-    border: 2px solid #3498db;
-    transition: 0.3s;
-}
-.navigation.open {
-    bottom: 0px;
-}
-@media(max-width: 991px) {
-    .navigation {
-        bottom: -224px;
-    }
-}
-@media(max-width: 767px) {
-    .navigation {
-        bottom: -224px;
-    }
-}
-@media(max-width: 575px) {
-    .navigation {
-        bottom: -654px;
-    }
-}
-.navigation .show {
-    position: absolute;
-    z-index: 1000;
-    top: -19px;
-    left: 50%;
-    font-size: 12px;
-    color: #3498db;
-    background-color: #eee;
-    padding: 0px 15px;
-    border-radius: 10px;
-    transform: translateX(-50%);
-    cursor: pointer;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #3498db #3498db transparent #3498db;
-}
-.navigation .box {
-    width: calc((100% / 5) - 8px);
-    overflow: hidden;
-    border-radius: 10px;
-    cursor: pointer;
-    position: relative;
-}
-@media(max-width: 991px) {
-    .navigation .box {
-        width: calc((100% / 4) - 8px);
-    }
-}
-@media(max-width: 767px) {
-    .navigation .box {
-        width: calc((100% / 3) - 8px);
-    }
-}
-@media(max-width: 575px) {
-    .navigation .box {
-        width: 100%;
-    }
-}
-.navigation .box img {
-    width: 100%;
-    height: 100px;
-    transition: 0.3s;
-}
-@media(max-width: 575px) {
-    .navigation .box img {
-        width: 100%;
-        height: 120px;
-    }
-}
-.navigation .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0000002e;
-}
-.navigation .box .overlay:hover {
-    background-color: transparent;
-}
-.navigation .box:hover img {
-    transform: scale(1.5);
-}
-/* End Navigation */
-.box .red-army,
-.box .red-tank,
-.box .red-cannon,
-.box .red-lancher,
-.box .red-uav {
-    display: none;
-    position: absolute;
-    top: -4px;
-    right: 40px;
-    z-index: 1030;
-    width: 65px;
-    height: 50px;
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #3498db transparent #3498db #3498db;
-}
-.box .arrmy:hover + .red-army,
-.box .army-tank:hover + .red-tank,
-.box .cannon:hover + .red-cannon,
-.box .r-lancher:hover + .red-lancher,
-.box .iran-uav:hover + .red-uav {
-    display: flex;
-}
-.box .red-army:hover,
-.box .red-tank:hover,
-.box .red-cannon:hover,
-.box .red-uav:hover,
-.box .red-lancher:hover{
-    display: flex;
-}
-.box .red-army img.active,
-.box .red-tank img.active,
-.box .red-cannon img.active,
-.box .red-lancher img.active,
-.box .red-uav img.active,
-.box .red-lancher img.active{
-    opacity: 1;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>War Map</title>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="icons open">
+        <div class="show"><i class='fa-solid fa-angle-right'></i></div>
+        <div class="box">
+            <img class="arrmy" src="images/army.png" alt="جنود الجيش">
+            <span class="red-army">
+                <img class="rsf" src="images/army-2.png" alt="جنود المليشيا">
+            </span>
+        </div>
+        <div class="box">
+            <img class="army-tank" src="images/tank.png" alt="دبابة الجيش">
+            <span class="red-tank">
+                <img class="tank-2" src="images/tank-2.png" alt="دبابة المليشيا">
+            </span>
+        </div>
+        <div class="box">
+            <img class="cannon" src="images/cannon.png" alt="مدفع الجيش">
+            <span class="red-cannon">
+                <img class="cannon-2" src="images/cannon-2.png" alt="مدفع المليشيا">
+            </span>
+        </div>
+        <div class="box">
+            <img class="r-lancher" src="images/r-lancher.png" alt="Rocketlancher">
+            <span class="red-lancher">
+                <img class="r-lancher-2" src="images/r-lancher-2.png" alt="RSF Lancher">
+            </span>
+        </div>
+        <div class="box">
+            <img class="iran-uav" src="images/iran-uav.png" alt="مسيرة الجيش">
+            <span class="red-uav">
+                <img class="iran-uav-2" src="images/iran-uav-2.png" alt="مسيرة المليشيا">
+            </span>
+        </div>
+        <div class="box">
+            <img class="apache" src="images/apache.png" alt="Apache">
+        </div>
+        <div class="box">
+            <img class="mig" src="images/fighter.png" alt="طائرة الجيش">
+        </div>
+        <div class="box">
+            <img class="fire" src="images/fire.png" alt="Fire">
+        </div>
+        <div class="box">
+            <span class="reset btn btn-warning"><i class="fas fa-undo"></i></span>
+        </div>
+        <div class="box">
+            <span class="delete btn btn-danger"><i class="fas fa-close"></i></span>
+        </div>
+        <div class="box">
+            <span class="home btn btn-primary"><i class="fas fa-home"></i></span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="navigation">
+            <div class="show"><i class='fa-solid fa-angle-down'></i></div>
+            <div class="sinar box">
+                <div class="overlay">سنار</div>
+                <img src="images/Sinar.jpg" alt="سنار">
+            </div>
+            <div class="fasher box">
+                <div class="overlay">الفاشر</div>
+                <img src="images/Alfasher.jpg" alt="الفاشر">
+            </div>
+            <div class="khartoum box">
+                <div class="overlay">الخرطوم</div>
+                <img src="images/Khartoum.jpg" alt="الخرطوم">
+            </div>
+            <div class="omdurman box">
+                <div class="overlay">امدرمان</div>
+                <img src="images/Umdurman.webp" alt="امدرمان">
+            </div>
+            <div class="bahri box">
+                <div class="overlay">بحري</div>
+                <img src="images/Bahri.webp" alt="بحري">
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
