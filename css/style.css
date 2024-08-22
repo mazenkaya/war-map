@@ -23,6 +23,9 @@ body {
     border: 2px solid #3498db;
     transition: 0.3s;
 }
+.icons .box {
+    position: relative;
+}
 .icons .show {
     position: absolute;
     left: -19px;
@@ -185,7 +188,7 @@ body {
     display: none;
     position: absolute;
     top: -4px;
-    right: 39px;
+    right: 40px;
     z-index: 1030;
     width: 65px;
     height: 50px;
@@ -196,9 +199,6 @@ body {
     border-width: 2px;
     border-style: solid;
     border-color: #3498db transparent #3498db #3498db;
-}
-.box .red-lancher {
-    right: 53px !important;
 }
 .box .arrmy:hover + .red-army,
 .box .army-tank:hover + .red-tank,
