@@ -160,9 +160,13 @@ function iconClick(icon, iconLink, iconRotated = null, iconSize) {
 }
 
 iconClick(".arrmy", "./images/army.png", "./images/army.png", [40, 40]);
+iconClick(".rsf", "./images/army-2.png", "./images/army-2.png", [40, 40]);
 iconClick(".army-tank", "./images/tank.png" , "./images/flip-tank.png", [40, 40]);
+iconClick(".tank-2", "./images/tank-2.png" , "./images/flip-tank-2.png", [40, 40]);
 iconClick(".cannon", "./images/cannon.png", "./images/flip-cannon.png", [40, 40]);
+iconClick(".cannon-2", "./images/cannon-2.png", "./images/flip-cannon-2.png", [40, 40]);
 iconClick(".r-lancher", "./images/r-lancher.png", "./images/flip-r-lancher.png", [40, 40]);
+iconClick(".r-lancher-2", "./images/r-lancher-2.png", "./images/flip-r-lancher-2.png", [40, 40]);
 iconClick(".apache", "./images/apache.png", "./images/apache.png", [40, 40]);
 iconClick(".iran-uav", "./images/iran-uav.png", "./images/flip-iran-uav.png", [40, 40]);
 iconClick(".mig", "./images/fighter.png", "./images/flip-fighter.png", [40, 40]);
